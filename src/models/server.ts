@@ -29,7 +29,7 @@ class Server {
   // middlewares
   middlewares () {
     // coors
-    const origenesAutorizados = ['http://jose.imd.bo:3000', 'http://localhost:3000'];
+    const origenesAutorizados = ['http://jose.imd.bo:3000', 'http://localhost'];
     const opciones: CorsOptions = {
       origin: origenesAutorizados
     };

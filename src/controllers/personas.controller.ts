@@ -12,32 +12,40 @@ export const getPersonas = async (req:Request, res:Response) => {
   let Email: string = '';
   let Celular: string = '';
   let NombreCompleto: string = '';
+  let CodigoUsuario: string = '';
 
-  if (Number(comercio.total_filas) > 0) {
+  if (Number(comercio.totalFilas) > 0) {
     IdPersona = comercio.personas[0].IdPersona;
     Email = comercio.personas[0].Email;
     Celular = '';
-    NombreCompleto = comercio.personas[0].NombreCompleto.toUpperCase();
+    NombreCompleto = comercio.personas[0].NombreCompleto;
+    CodigoUsuario = comercio.personas[0].CodigoUsuario;
   } else {
-    if (Number(ddjj.total_filas) > 0) {
+    if (Number(ddjj.totalFilas) > 0) {
       IdPersona = ddjj.personas[0].id_persona;
       Email = ddjj.personas[0].email;
       Celular = ddjj.personas[0].celular.toString();
-      NombreCompleto = ddjj.personas[0].nombres.toUpperCase()+' '+ddjj.personas[0].apellido_paterno.toUpperCase()+' '+ddjj.personas[0].apellido_materno.toUpperCase();
+      NombreCompleto = ddjj.personas[0].nombres + ' ' + ddjj.personas[0].apellido_paterno + ' ' + ddjj.personas[0].apellido_materno;
     } else {
-      if (Number(admision.total_filas) > 0) {
+      if (Number(admision.totalFilas) > 0) {
         IdPersona = admision.personas[0].IdPersona;
         Email = admision.personas[0].Email;
         Celular = admision.personas[0].Celular;
-        NombreCompleto = admision.personas[0].Nombres.toUpperCase()+' '+admision.personas[0].Paterno.toUpperCase()+' '+admision.personas[0].Materno.toUpperCase();
+        NombreCompleto = admision.personas[0].Nombres + ' ' + admision.personas[0].Paterno + ' ' + admision.personas[0].Materno;
       }
     }
   }
+
+  IdPersona = IdPersona.toUpperCase().trim();
+  Email = Email.trim();
+  Celular = Celular.trim();
+  NombreCompleto = NombreCompleto.toUpperCase().trim();
 
   res.status(200).json({
     IdPersona,
     Email,
     Celular,
-    NombreCompleto
+    NombreCompleto,
+    CodigoUsuario
   });
 }

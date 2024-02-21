@@ -1,59 +1,74 @@
 
-export interface TResultado {
-  total_filas: number;
-  predios:     TPredio[];
+export interface AdmisionPersona {
+  IdPersona:               string;
+  IdLugarEmision:          number;
+  Paterno:                 string;
+  Materno:                 string;
+  Nombres:                 string;
+  FechaNacimiento:         Date;
+  Sexo:                    string;
+  EstadoCivil:             string;
+  Direccion:               string;
+  Celular:                 string;
+  Telefono:                string;
+  Email:                   string;
+  IdLugarNacimiento:       number;
+  CodigoRueColegio:        string;
+  AnnioEgresoColegio:      string;
+  NombreCompletoApoderado: string;
+  CelularApoderado:        string;
+  DireccionApoderado:      string;
+  Password:                string;
+  Verificado:              boolean;
+  CodigoNacionalidad:      string;
+  FechaHoraRegistro:       Date;
 }
 
-export interface TPredio {
-  OBJECTID:                     number;
-  referencia_catastral:         string;
-  referencia_catastral_antigua: string;
-  last_edited_date:             Date;
-  geometria:                    string;
-  centroide:                    string;
+export interface Admision {
+  totalFilas: number | any;
+  personas: AdmisionPersona[] | any[];
 }
 
-export interface TRPredio {
-  OBJECTID:                     number;
-  referencia_catastral:         string;
-  referencia_catastral_antigua: null | string;
-  last_edited_date:             Date;
-  tipo_forma:                   string;
-  coordenadas_geograficas:      Array<Array<number[] | number>>;
-  centroide:                    Array<Array<number[] | number>>;        
+export interface ComercioPersona {
+  CodigoUsuario:          string;
+  Login:                  string;
+  IdPersona:              string;
+  NombreCompleto:         string;
+  Email:                  string;
+  AuthKey:                string;
+  PasswordHash:           string;
+  PasswordResetToken:     null;
+  Estado:                 string;
+  EsAdmin:                null;
+  FechaHoraRegistro:      Date;
+  FechaHoraActualizacion: Date;
+  VerificationToken:      string;
 }
 
-export interface UnPredio {
-  predio: CCPredio;
+export interface Comercio {
+  totalFilas: number | any;
+  personas: AdmisionPersona[] | any[];
 }
 
-export interface CCPredio {
-  objectid:                     number;
-  referencia_catastral:         string;
-  referencia_catastral_antigua: string;
-  created_user:                 string;
-  created_date:                 Date;
-  last_edited_user:             string;
-  last_edited_date:             Date;
-  tep_id:                       number;
-  cep_id:                       number;
-  tuc_id:                       number;
-  geometria:                    string;
-  centroide:                    string;
+export interface DdjjPersona {
+  id_persona:          string;
+  apellido_paterno:    string;
+  apellido_materno:    string;
+  nombres:             string;
+  lugar_emision:       string;
+  fecha_nacimiento:    Date;
+  codigo_nacionalidad: string;
+  id_lugar:            number;
+  estado_civil:        string;
+  sexo:                string;
+  direccion:           string;
+  telefono:            number;
+  celular:             number;
+  email:               string;
+  discapacidad:        string;
 }
 
-export interface TTPredio {
-  objectid:                     number;
-  referencia_catastral:         string;
-  referencia_catastral_antigua: string;
-  created_user:                 string;
-  created_date:                 Date;
-  last_edited_user:             string;
-  last_edited_date:             Date;
-  tep_id:                       number;
-  cep_id:                       number;
-  tuc_id:                       number;
-  tipo_forma:                   string;
-  coordenadas_geograficas:      Array<Array<number[] | number>>;
-  centroide:                    Array<Array<number[] | number>>; 
+export interface Ddjj {
+  totalFilas: number | any;
+  personas: AdmisionPersona[] | any[];
 }
