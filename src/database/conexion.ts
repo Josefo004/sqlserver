@@ -1,0 +1,59 @@
+import dotenv from 'dotenv';
+import { Sequelize } from 'sequelize';
+dotenv.config();
+
+const admisionConfig = {
+  user: `${process.env.USER_DB1}`,
+  password: `${process.env.PASS_DB1}`,
+  server: `${process.env.HOST_DB1}`,
+  database: `${process.env.NAME_BD1}`
+}
+
+const declaracionJuradaConfig = {
+  user: `${process.env.USER_DB2}`,
+  password: `${process.env.PASS_DB2}`,
+  server: `${process.env.HOST_DB2}`,
+  database: `${process.env.NAME_BD2}`
+}
+
+const comercioConfig = {
+  user: `${process.env.USER_DB3}`,
+  password: `${process.env.PASS_DB3}`,
+  server: `${process.env.HOST_DB3}`,
+  database: `${process.env.NAME_BD3}`
+}
+
+const db1 = new Sequelize(admisionConfig.database, admisionConfig.user, admisionConfig.password, {
+  host: admisionConfig.server,
+  dialect: 'mssql',
+  dialectOptions: {
+    options: {
+      encrypt: false,
+      trustServerCertificate: false
+    }
+  }
+});
+
+const db2 = new Sequelize(declaracionJuradaConfig.database, declaracionJuradaConfig.user, declaracionJuradaConfig.password, {
+  host: declaracionJuradaConfig.server,
+  dialect: 'mssql',
+  dialectOptions: {
+    options: {
+      encrypt: false,
+      trustServerCertificate: false
+    }
+  }
+});
+
+const db3 = new Sequelize(comercioConfig.database, comercioConfig.user, comercioConfig.password, {
+  host: comercioConfig.server,
+  dialect: 'mssql',
+  dialectOptions: {
+    options: {
+      encrypt: false,
+      trustServerCertificate: false
+    }
+  }
+});
+
+export { db1, db2, db3 };
