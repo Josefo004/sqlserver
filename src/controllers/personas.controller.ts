@@ -40,6 +40,7 @@ export const getPersonas = async (req:Request, res:Response) => {
   Email = Email.trim();
   Celular = Celular.trim();
   NombreCompleto = NombreCompleto.toUpperCase().trim();
+  CodigoUsuario = CodigoUsuario.trim();
 
   res.status(200).json({
     IdPersona,
