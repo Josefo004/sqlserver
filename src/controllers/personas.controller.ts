@@ -17,7 +17,7 @@ export const getPersonas = async (req:Request, res:Response) => {
   if (Number(comercio.totalFilas) > 0) {
     IdPersona = comercio.personas[0].IdPersona;
     Email = comercio.personas[0].Email;
-    Celular = '';
+    Celular = comercio.personas[0].Celular;
     NombreCompleto = comercio.personas[0].NombreCompleto;
     CodigoUsuario = comercio.personas[0].CodigoUsuario;
   } else {
