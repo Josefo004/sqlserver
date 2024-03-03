@@ -3,13 +3,15 @@ import express, { Application } from 'express';
 import cors, { CorsOptions } from 'cors';
 
 import rutasPersona from '../routes/personas.route';
+import rutaRecepcionPago from '../routes/recepcion.route';
 import { db1, db2, db3 } from '../database/conexion';
 
 class Server {
   private app : Application;
   private port : string;
   private apiMsql = {
-    personas: '/api/v0/personas'
+    personas: '/api/v0/personas',
+    recepcion: '/api/v0/recepcion'
   };
 
   constructor () {
@@ -60,6 +62,7 @@ class Server {
   // rutas
   routes () {
     this.app.use(this.apiMsql.personas, rutasPersona);
+    this.app.use(this.apiMsql.recepcion, rutaRecepcionPago);
   }
 
   listen () {
