@@ -6,7 +6,7 @@ export const getUltimaComision = async (req:Request, res:Response) => {
   // console.log(comision);
 
   res.status(200).json({
-    comision: comision.registros
+    comision
   });
 }
 

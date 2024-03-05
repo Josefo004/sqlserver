@@ -4,6 +4,7 @@ import { check } from 'express-validator';
 import {
   getUltimaComision, postNuevaComision
 } from '../controllers/comision.controller';
+
 import { validarCampos } from '../middlewares/validar-campos';
 
 const router = Router();

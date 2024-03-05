@@ -5,6 +5,9 @@ GET http://localhost:3000/api/v0/personas/3659537
 ###
 GET http://localhost:3000/api/v0/comision/
 
+### 
+GET http://172.16.1.251/consultasapi/v0/comision/
+
 ###
 POST http://localhost:3000/api/v0/comision
 Content-Type: application/json
