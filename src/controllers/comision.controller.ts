@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ultimaComision } from '../helpers/c_comision';
+import { ultimaComision, insertComision } from '../helpers/c_comision';
 
 export const getUltimaComision = async (req:Request, res:Response) => {
   const comision = await ultimaComision();
@@ -8,4 +8,18 @@ export const getUltimaComision = async (req:Request, res:Response) => {
   res.status(200).json({
     comision: comision.registros
   });
+}
+
+export const postNuevaComision = async (req: Request, res: Response) => {
+  const { nuevoCosto } = req.body;
+  console.log('Nuevo Costo ', nuevoCosto);
+
+  const resultado = await insertComision(nuevoCosto);
+  console.log('resultado', resultado);
+
+  const estado = resultado.length > 0 ? 200 : 400;
+
+  res.status(estado).json(
+    resultado
+  );
 }

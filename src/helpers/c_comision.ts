@@ -1,5 +1,5 @@
 import { db4 } from '../database/conexion';
-// import { Admision, Comercio, Ddjj } from '../interfaces/pre_res.interface';
+import Comision from '../models/tablasPagos/comision';
 
 export const ultimaComision = async () => {
   let q: string = ``;
@@ -7,7 +7,26 @@ export const ultimaComision = async () => {
   const [results, rows] = await db4.query(q);
 
   return {
-    filas: rows,
-    registros: results
+    totalFilas: rows,
+    registros: results[0]
   };
+}
+
+export const insertComision = async (nc:number) => {
+  try {
+    const existeCosto = await Comision.findOne({
+      where: { CostoComision: nc }
+    });
+    console.log('existeCosto', existeCosto);
+    if (existeCosto !== null) {
+      console.log(nc, 'ya existe');
+      return [];
+    }
+    const nuevaComision = await Comision.create({ CostoComision: nc });
+    await nuevaComision.save();
+    return [nuevaComision];
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }

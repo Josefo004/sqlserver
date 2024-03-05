@@ -72,3 +72,15 @@ export interface Ddjj {
   totalFilas: number | any;
   personas: AdmisionPersona[] | any[];
 }
+
+
+export interface ComisionElement {
+  IdComision:        number;
+  FechaHoraRegistro: Date;
+  CostoComision:     number;
+}
+
+export interface Comision {
+  comision: ComisionElement[] | any[];
+}
+
