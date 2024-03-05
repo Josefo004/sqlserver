@@ -4,14 +4,16 @@ import cors, { CorsOptions } from 'cors';
 
 import rutasPersona from '../routes/personas.route';
 import rutaRecepcionPago from '../routes/recepcion.route';
-import { db1, db2, db3 } from '../database/conexion';
+import rutaComision from '../routes/comision.route';
+import { db1, db2, db3, db4 } from '../database/conexion';
 
 class Server {
   private app : Application;
   private port : string;
   private apiMsql = {
     personas: '/api/v0/personas',
-    recepcion: '/api/v0/recepcion'
+    recepcion: '/api/v0/recepcion',
+    comision: '/api/v0/comision'
   };
 
   constructor () {
@@ -53,6 +55,8 @@ class Server {
       console.log('Data base online DeclaracionJuradaRRHH');
       await db3.authenticate();
       console.log('Data base online Ecommerce');
+      await db4.authenticate();
+      console.log('Data base online Pagos');
     } catch (error) {
       console.log(error);
       process.exit();
@@ -63,6 +67,7 @@ class Server {
   routes () {
     this.app.use(this.apiMsql.personas, rutasPersona);
     this.app.use(this.apiMsql.recepcion, rutaRecepcionPago);
+    this.app.use(this.apiMsql.comision, rutaComision)
   }
 
   listen () {

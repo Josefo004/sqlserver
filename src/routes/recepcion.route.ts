@@ -16,10 +16,4 @@ router.get('/', [
   validarCampos
 ], getRecepcion);
 
-// router.get('/', (req: Request, res: Response) => {
-//   res.status(200).json({
-//     msg: 'hgla'
-//   });
-// });
-
 export default router;

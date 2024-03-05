@@ -9,20 +9,6 @@ const admisionConfig = {
   database: `${process.env.NAME_BD1}`
 }
 
-const declaracionJuradaConfig = {
-  user: `${process.env.USER_DB2}`,
-  password: `${process.env.PASS_DB2}`,
-  server: `${process.env.HOST_DB2}`,
-  database: `${process.env.NAME_BD2}`
-}
-
-const comercioConfig = {
-  user: `${process.env.USER_DB3}`,
-  password: `${process.env.PASS_DB3}`,
-  server: `${process.env.HOST_DB3}`,
-  database: `${process.env.NAME_BD3}`
-}
-
 const db1 = new Sequelize(admisionConfig.database, admisionConfig.user, admisionConfig.password, {
   host: admisionConfig.server,
   dialect: 'mssql',
@@ -33,6 +19,13 @@ const db1 = new Sequelize(admisionConfig.database, admisionConfig.user, admision
     }
   }
 });
+
+const declaracionJuradaConfig = {
+  user: `${process.env.USER_DB2}`,
+  password: `${process.env.PASS_DB2}`,
+  server: `${process.env.HOST_DB2}`,
+  database: `${process.env.NAME_BD2}`
+}
 
 const db2 = new Sequelize(declaracionJuradaConfig.database, declaracionJuradaConfig.user, declaracionJuradaConfig.password, {
   host: declaracionJuradaConfig.server,
@@ -45,6 +38,13 @@ const db2 = new Sequelize(declaracionJuradaConfig.database, declaracionJuradaCon
   }
 });
 
+const comercioConfig = {
+  user: `${process.env.USER_DB3}`,
+  password: `${process.env.PASS_DB3}`,
+  server: `${process.env.HOST_DB3}`,
+  database: `${process.env.NAME_BD3}`
+}
+
 const db3 = new Sequelize(comercioConfig.database, comercioConfig.user, comercioConfig.password, {
   host: comercioConfig.server,
   dialect: 'mssql',
@@ -56,4 +56,22 @@ const db3 = new Sequelize(comercioConfig.database, comercioConfig.user, comercio
   }
 });
 
-export { db1, db2, db3 };
+const pagosConfig = {
+  user: `${process.env.USER_DB4}`,
+  password: `${process.env.PASS_DB4}`,
+  server: `${process.env.HOST_DB4}`,
+  database: `${process.env.NAME_BD4}`
+}
+
+const db4 = new Sequelize(pagosConfig.database, pagosConfig.user, pagosConfig.password, {
+  host: pagosConfig.server,
+  dialect: 'mssql',
+  dialectOptions: {
+    options: {
+      encrypt: false,
+      trustServerCertificate: false
+    }
+  }
+});
+
+export { db1, db2, db3, db4 };
