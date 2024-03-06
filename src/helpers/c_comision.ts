@@ -1,4 +1,3 @@
-import { db4 } from '../database/conexion';
 import Comision from '../models/tablasPagos/comision';
 
 export const ultimaComision = async () => {
@@ -13,14 +12,14 @@ export const ultimaComision = async () => {
 
 export const insertComision = async (nc:number) => {
   try {
-    const existeCosto = await Comision.findOne({
-      where: { CostoComision: nc }
-    });
-    console.log('existeCosto', existeCosto);
-    if (existeCosto !== null) {
-      console.log(nc, 'ya existe');
-      return [];
-    }
+    // const existeCosto = await Comision.findOne({
+    //   where: { CostoComision: nc }
+    // });
+    // console.log('existeCosto', existeCosto);
+    // if (existeCosto !== null) {
+    //   console.log(nc, 'ya existe');
+    //   return [];
+    // }
     const nuevaComision = await Comision.create({ CostoComision: nc });
     await nuevaComision.save();
     return [nuevaComision];

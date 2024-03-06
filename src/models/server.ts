@@ -5,6 +5,7 @@ import cors, { CorsOptions } from 'cors';
 import rutasPersona from '../routes/personas.route';
 import rutaRecepcionPago from '../routes/recepcion.route';
 import rutaComision from '../routes/comision.route';
+import rutaPagosQr from '../routes/pagosqr.route';
 import { db1, db2, db3, db4 } from '../database/conexion';
 
 class Server {
@@ -13,7 +14,8 @@ class Server {
   private apiMsql = {
     personas: '/api/v0/personas',
     recepcion: '/api/v0/recepcion',
-    comision: '/api/v0/comision'
+    comision: '/api/v0/comision',
+    pagosQr: '/api/v0/pagosqr'
   };
 
   constructor () {
@@ -67,7 +69,8 @@ class Server {
   routes () {
     this.app.use(this.apiMsql.personas, rutasPersona);
     this.app.use(this.apiMsql.recepcion, rutaRecepcionPago);
-    this.app.use(this.apiMsql.comision, rutaComision)
+    this.app.use(this.apiMsql.comision, rutaComision);
+    this.app.use(this.apiMsql.pagosQr, rutaPagosQr);
   }
 
   listen () {
