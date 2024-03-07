@@ -1,4 +1,4 @@
-import Comision from '../models/tablasPagos/comision';
+import Comision from '../../models/tablasPagos/comision';
 
 export const ultimaComision = async () => {
   const ultimo = await Comision.findOne({

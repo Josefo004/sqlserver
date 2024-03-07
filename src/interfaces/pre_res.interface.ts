@@ -84,3 +84,18 @@ export interface Comision {
   comision: ComisionElement[] | any[];
 }
 
+export interface tOrden {
+  IdOrden:                    number;
+  CodigoEstado:               string;
+  TotalOrden:                 number;
+  CodigoUsuarioCreacion:      string;
+  FechaCreacion:              Date;
+  CodigoUsuarioActualizacion: null;
+  FechaActualizacion:         null;
+  Observacion:                null;
+  Email:                      string;
+  Celular:                    string;
+  NombreCompleto:             string;
+  CostoComision:              number;
+  CodigoPago:                 string;
+}

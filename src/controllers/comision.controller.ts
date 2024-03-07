@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ultimaComision, insertComision } from '../helpers/c_comision';
+import { ultimaComision, insertComision } from '../helpers/pagos/c_comision';
 
 export const getUltimaComision = async (req:Request, res:Response) => {
   const comision = await ultimaComision();
