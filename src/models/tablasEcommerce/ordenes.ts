@@ -8,7 +8,7 @@ const Ordenes = db3.define('Ordenes', {
   CodigoUsuarioCreacion: { type: DataTypes.STRING(15) },
   FechaCreacion: { type: DataTypes.DATE },
   CodigoUsuarioActualizacion: { type: DataTypes.STRING(15) },
-  FechaActualizacion: { type: DataTypes.DATE },
+  FechaActualizacion: { type: DataTypes.DATEONLY },
   Observacion: { type: DataTypes.TEXT },
   Email: { type: DataTypes.STRING(100) },
   Celular: { type: DataTypes.STRING(15) },
