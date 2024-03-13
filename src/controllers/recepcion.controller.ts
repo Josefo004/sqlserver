@@ -9,6 +9,16 @@ export const getRecepcion = async (req:Request, res:Response) => {
     orden.CodigoEstado = 'A';
     orden.CodigoUsuarioActualizacion = 'jmv';
     orden.FechaActualizacion = fechaPago;
+    const fechaActual = new Date();
+    const fechaFormateada = fechaActual.toLocaleString('es-ES', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    })
+    orden.Observacion = orden.Observacion + fechaFormateada + ' Orden Pagada con Codigo QR por : usw ;';
     orden.save();
   }
 
