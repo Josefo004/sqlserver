@@ -108,11 +108,26 @@ export interface tDetalleOrden {
 
 // Define las propiedades del modelo
 export interface ProductoTallasAttributes {
-    IdProductoTalla: number;
-    IdProducto: number;
-    IdTalla: number;
-    Cantidad: number;
-    FechaCreacion: Date;
-    FechaModificacion: Date;
-    CantidadVendida: number;
-  }
+  IdProductoTalla: number;
+  IdProducto: number;
+  IdTalla: number;
+  Cantidad: number;
+  FechaCreacion: Date;
+  FechaModificacion: Date;
+  CantidadVendida: number;
+}
+
+export interface Tdeposito {
+  NroDocumento: string | any;
+  gestion: number;
+  FechaDepositoBancario: Date | any;
+  TipoCuenta: number;
+  Monto: number | any;
+  CodigoEstado: string;
+  CodigoUsuario: string;
+  FechaHoraRegistro: Date | any;
+  CodigoTipoTransaccion: string;
+  Observaciones: string;
+  CodigoPago: string | any;
+  CostoComision: number;
+}

@@ -1,3 +1,4 @@
+
 import Comision from '../../models/tablasPagos/comision';
 
 export const ultimaComision = async () => {
@@ -28,3 +29,14 @@ export const insertComision = async (nc:number) => {
     return [];
   }
 }
+
+// export const insertDeposito = async (ddd: Tdeposito) => {
+//   try {
+//     const nuevoDeposito = await Depositos.create({ ddd });
+//     await nuevoDeposito.save();
+//     return [nuevoDeposito];
+//   } catch (error) {
+//     console.log(error);
+//     return [];
+//   }
+// }
