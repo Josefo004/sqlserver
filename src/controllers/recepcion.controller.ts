@@ -1,11 +1,20 @@
 import { Request, Response } from 'express';
-import { obtenerOrden } from '../helpers/ecommerce/c_ordenes';
+import { obtenerOrden, obtenerDetallesOrden, actualizarProductoTalla } from '../helpers/ecommerce/c_ordenes';
+import { tDetalleOrden } from '../interfaces/pre_res.interface';
 
-export const getRecepcion = async (req:Request, res:Response) => {
+export const getRecepcion = async (req: Request, res: Response) => {
   const { codigoPago, nroDocumento, fechaPago } = req.query;
 
   const orden = await obtenerOrden(codigoPago);
   if (orden !== null) {
+    const detalleOrden = await obtenerDetallesOrden(orden.IdOrden);
+    // console.log(detalleOrden);
+
+    detalleOrden.forEach(function (value:tDetalleOrden) {
+      const aa = actualizarProductoTalla(value.IdProductoTalla, value.Cantidad);
+      console.log(aa);
+    });
+
     orden.CodigoEstado = 'A';
     orden.CodigoUsuarioActualizacion = 'jmv';
     orden.FechaActualizacion = fechaPago;
@@ -21,12 +30,6 @@ export const getRecepcion = async (req:Request, res:Response) => {
     orden.Observacion = orden.Observacion + fechaFormateada + ' Orden Pagada con Codigo QR por : usw ;';
     orden.save();
   }
-
-  // if (orden !== null) {
-  //   console.log(orden);
-  //   orden.CodigoEstado = 'A';
-  //   return [];
-  // }
 
   res.status(200).json({
     codigoPago,

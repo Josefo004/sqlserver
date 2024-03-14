@@ -1,7 +1,9 @@
 import Ordenes from '../../models/tablasEcommerce/ordenes';
-import { tOrden } from '../../interfaces/pre_res.interface';
+import DetalleOrdenes from '../../models/tablasEcommerce/detalleOrdenes';
+import ProductoTallas from '../../models/tablasEcommerce/productoTallas';
+import { tOrden, tDetalleOrden } from '../../interfaces/pre_res.interface';
 
-export const obtenerOrden = async (CodigoPago :string | any):Promise<tOrden | any> => {
+export const obtenerOrden = async (CodigoPago: string | any): Promise<tOrden | any> => {
   const orden = await Ordenes.findOne({
     where: { CodigoPago }
   });
@@ -9,13 +11,22 @@ export const obtenerOrden = async (CodigoPago :string | any):Promise<tOrden | an
   return orden;
 }
 
-// export const insertComision = async (nc:number) => {
-//   try {
-//     const nuevaComision = await Comision.create({ CostoComision: nc });
-//     await nuevaComision.save();
-//     return [nuevaComision];
-//   } catch (error) {
-//     console.log(error);
-//     return [];
-//   }
-// }
+export const obtenerDetallesOrden = async (IdOrden: string): Promise<tDetalleOrden[] | any> => {
+  const detalles = await DetalleOrdenes.findAll({
+    attributes: ['IdOrden', 'IdProductoTalla', 'Cantidad'],
+    where: { IdOrden }
+  });
+
+  return detalles;
+}
+
+export const actualizarProductoTalla = async (IdProductoTalla: number, Cantidad: number) => {
+  const protalla = await ProductoTallas.findOne({
+    where: { IdProductoTalla }
+  });
+  if (protalla !== null) {
+    protalla.CantidadVendida = protalla.CantidadVendida + Cantidad;
+    await protalla.save();
+  }
+  return protalla;
+}

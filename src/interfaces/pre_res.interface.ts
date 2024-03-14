@@ -99,3 +99,9 @@ export interface tOrden {
   CostoComision:              number;
   CodigoPago:                 string;
 }
+
+export interface tDetalleOrden {
+    IdOrden:         number;
+    IdProductoTalla: number;
+    Cantidad: number;
+}
