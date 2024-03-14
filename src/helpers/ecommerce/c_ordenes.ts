@@ -24,8 +24,10 @@ export const actualizarProductoTalla = async (IdProductoTalla: number, Cantidad:
   const protalla = await ProductoTallas.findOne({
     where: { IdProductoTalla }
   });
+  console.log(protalla);
+
   if (protalla !== null) {
-    protalla.CantidadVendida = protalla.CantidadVendida + Cantidad;
+    protalla.Cantidad = protalla.CantidadVendida + Cantidad;
     await protalla.save();
   }
   return protalla;

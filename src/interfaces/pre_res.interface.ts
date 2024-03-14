@@ -105,3 +105,14 @@ export interface tDetalleOrden {
     IdProductoTalla: number;
     Cantidad: number;
 }
+
+// Define las propiedades del modelo
+export interface ProductoTallasAttributes {
+    IdProductoTalla: number;
+    IdProducto: number;
+    IdTalla: number;
+    Cantidad: number;
+    FechaCreacion: Date;
+    FechaModificacion: Date;
+    CantidadVendida: number;
+  }
